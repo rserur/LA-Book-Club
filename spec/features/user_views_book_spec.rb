@@ -18,7 +18,7 @@ feature 'user views book show page' do
 
     visit book_path(review.book.id)
 
-    expect(page).to have_content(review.rating, review.body, book.title)
+    expect(page).to have_content(review.rating, review.body, review.book.title)
 
   end
 
