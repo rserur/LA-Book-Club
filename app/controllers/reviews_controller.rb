@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     @review.book = @book
 
     if @review.save
-      redirect_to @book, notice: 'Review was successfully created.'
+      redirect_to @book, notice: 'Review successfully created.'
     else
       render :new
     end
