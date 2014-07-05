@@ -8,5 +8,5 @@ class Book < ActiveRecord::Base
   validates :title, presence: true
   validates :year, presence: true
   validates :year, length: { is: 4 }
-
+  validates_uniqueness_of :title, scope: :author_id
 end
