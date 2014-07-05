@@ -4,6 +4,8 @@ feature 'user creates book' do
 
   scenario '.book successfully added with new author' do
 
+    category = FactoryGirl.create(:category)
+
     book_attrs = {
       title: Faker::Address.city,
       description: Faker::Lorem.sentence,
@@ -23,6 +25,7 @@ feature 'user creates book' do
     fill_in 'Title', with: book.title
     fill_in 'Description', with: book.description
     fill_in 'Year', with: book.year
+    select category.name, from: 'Category'
 
     fill_in 'First Name', with: author.first_name
     fill_in 'Last Name', with: author.last_name
@@ -35,6 +38,8 @@ feature 'user creates book' do
   end
 
   scenario '.book successfully added with existing author' do
+
+    category = FactoryGirl.create(:category)
 
     author = FactoryGirl.create(:author)
 
@@ -51,6 +56,7 @@ feature 'user creates book' do
     fill_in 'Title', with: book.title
     fill_in 'Description', with: book.description
     fill_in 'Year', with: book.year
+    select category.name, from: 'Category'
 
     fill_in 'First Name', with: author.first_name
     fill_in 'Last Name', with: author.last_name
