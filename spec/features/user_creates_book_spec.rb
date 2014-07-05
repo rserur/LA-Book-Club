@@ -9,12 +9,12 @@ feature 'user creates book' do
     book_attrs = {
       title: Faker::Address.city,
       description: Faker::Lorem.sentence,
-      year: rand(2014)
+      year: rand(1000..2014)
     }
 
     author_attrs = {
-      author_first: Faker::Name.first_name,
-      author_last: Faker::Name.last_name
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name
     }
 
     book = Book.new(book_attrs)
@@ -25,15 +25,14 @@ feature 'user creates book' do
     fill_in 'Title', with: book.title
     fill_in 'Description', with: book.description
     fill_in 'Year', with: book.year
-    select category.name, from: 'Category'
+    select category.name, from: 'book[category_id]'
 
-    fill_in 'First Name', with: author.first_name
-    fill_in 'Last Name', with: author.last_name
+    fill_in 'First name', with: author.first_name
+    fill_in 'Last name', with: author.last_name
 
     click_button 'Create Book'
 
-    expect(page).to have_content 'Book was successfully created.'
-    expect(page).to have_content 'Author was successfully created.'
+    expect(page).to have_content 'Book successfully created with new author.'
 
   end
 
@@ -46,7 +45,7 @@ feature 'user creates book' do
     book_attrs = {
       title: Faker::Address.city,
       description: Faker::Lorem.sentence,
-      year: rand(2014)
+      year: rand(1000..2014)
     }
 
     book = Book.new(book_attrs)
@@ -56,15 +55,14 @@ feature 'user creates book' do
     fill_in 'Title', with: book.title
     fill_in 'Description', with: book.description
     fill_in 'Year', with: book.year
-    select category.name, from: 'Category'
+    select category.name, from: 'book[category_id]'
 
-    fill_in 'First Name', with: author.first_name
-    fill_in 'Last Name', with: author.last_name
+    fill_in 'First name', with: author.first_name
+    fill_in 'Last name', with: author.last_name
 
     click_button 'Create Book'
 
-    expect(page).to have_content 'Book was successfully created.'
-    expect(page).to have_content 'Existing author selected for book.'
+    expect(page).to have_content 'Book successfully created with existing author.'
 
   end
 
@@ -74,10 +72,8 @@ feature 'user creates book' do
 
     click_button 'Create Book'
 
-    expect(page).to have_content "Title can't be blank."
-    expect(page).to have_content "Year can't be blank."
-    expect(page).to have_content "First Name can't be blank."
-    expect(page).to have_content "Last Name can't be blank."
+    expect(page).to have_content "can't be blank"
+
   end
 
 
