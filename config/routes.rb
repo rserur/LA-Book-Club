@@ -6,4 +6,8 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  resources :authors do
+    resources :authors
+  end
+
 end
