@@ -76,5 +76,27 @@ feature 'user creates book' do
 
   end
 
+  scenario '.book creation fails when year is incorrect' do
+
+    book_attrs = {
+      title: Faker::Address.city,
+      description: Faker::Lorem.sentence,
+      year: 123
+    }
+
+    book = Book.new(book_attrs)
+
+    visit new_book_path
+
+    fill_in 'Title', with: book.title
+    fill_in 'Description', with: book.description
+    fill_in 'Year', with: book.year
+
+    click_button 'Create Book'
+
+    expect(page).to have_content "is the wrong length"
+
+  end
+
 
 end
