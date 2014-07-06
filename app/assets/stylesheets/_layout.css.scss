@@ -10,7 +10,7 @@
     padding-top: 10%;
 
     h2 {
-      padding-bottom: 1%;
+      padding-bottom: 2%;
       border-bottom: 1px solid #333;
       margin-bottom: 1%;
     }
@@ -22,5 +22,26 @@
         font-size: 1.2rem;
       }
     }
+
+    section {
+
+
+      &.details {
+        @include span-columns(8);
+
+        h3 {
+          margin-top: 2%;
+        }
+
+        .review {
+          @include span-columns(6);
+        }
+      }
+
+      &.add-review {
+        @include span-columns(4);
+      }
+    }
+
   }
 }

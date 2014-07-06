@@ -1,29 +1,39 @@
-<ul>
-  <li><strong>Title:</strong> <%= @book.title %>
-  <li><strong>Author:</strong> <%= @book.author.first_name %> <%= @book.author.last_name %></li>
-  <li><strong>Category:</strong> <%= @book.category.name %></li>
-  <li><strong>Year Published:</strong> <%= @book.year %></li>
-  <li><strong>Description:</strong> <%= @book.description %></li>
-</ul>
 
-<h3>Reviews</h3>
+<section class="details">
+  <h2>Book Details</h2>
 
-<ul>
+  <ul>
+    <li><strong>Title:</strong> <%= @book.title %>
+    <li><strong>Author:</strong> <%= @book.author.first_name %> <%= @book.author.last_name %></li>
+    <li><strong>Category:</strong> <%= @book.category.name %></li>
+    <li><strong>Year Published:</strong> <%= @book.year %></li>
+    <li><strong>Description:</strong> <%= @book.description %></li>
+  </ul>
+
+  <h3>Reviews</h3>
+  <hr>
+
   <% @book.reviews.each do |review| %>
-    <li>
+    <div class="review">
       <strong>Rating:</strong> <%= review.rating %>
       <p><%= review.body %></p>
-    </li>
+    </div>
   <% end %>
-</ul>
 
-<h3>Create Review</h3>
+</section>
 
-<%= simple_form_for [@book, @review] do |f| %>
+<section class="add-review">
 
-  <%= f.input :rating, collection: 1..5 %>
-  <%= f.input :body %>
+  <h4>Create Review</h4>
+  <hr>
 
-  <%= f.button :submit %>
+    <%= simple_form_for [@book, @review] do |f| %>
 
-<% end %>
+      <%= f.input :rating, collection: 1..5 %>
+      <%= f.input :body %>
+
+      <%= f.button :submit %>
+
+    <% end %>
+
+</section>
