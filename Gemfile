@@ -52,3 +52,4 @@ end
 gem 'faker'
 gem 'simple_form'
 gem 'bourbon'
+gem 'neat'
