@@ -53,3 +53,7 @@ gem 'faker'
 gem 'simple_form'
 gem 'bourbon'
 gem 'neat'
+
+group :test do
+  gem 'coveralls', require: false
+end
