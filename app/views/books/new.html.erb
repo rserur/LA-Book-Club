@@ -1,27 +1,29 @@
 <h2>Add Book</h2>
 
-<%= simple_form_for @book do |f| %>
+<section>
+  <%= simple_form_for @book do |f| %>
 
-  <%= f.input :title %>
+    <%= f.input :title %>
 
-  <%= f.simple_fields_for :author do |author_form| %>
+    <%= f.simple_fields_for :author do |author_form| %>
 
-  <fieldset>
+    <fieldset>
 
-    <legend>Author:</legend>
+      <legend>Author:</legend>
 
-    <%= author_form.input :first_name %>
+      <%= author_form.input :first_name %>
 
-    <%= author_form.input :last_name %>
-  </fieldset>
+      <%= author_form.input :last_name %>
+    </fieldset>
+    <% end %>
+
+    <%= f.input :year %>
+
+    <%= f.input :description %>
+
+    <%= f.association :category %>
+
+    <%= f.button :submit %>
+
   <% end %>
-
-  <%= f.input :year %>
-
-  <%= f.input :description %>
-
-  <%= f.association :category %>
-
-  <%= f.button :submit %>
-
-<% end %>
+</section>
