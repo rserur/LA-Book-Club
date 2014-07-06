@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>BookClub</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>BookClub</title>
+    <link href='http://fonts.googleapis.com/css?family=Lusitana:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,300italic,400italic,700italic,700,800,800italic' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<div class="container">
+    <div class="container">
 
-<header>
-  <h1> Book Club </h1>
-  <nav></nav>
-</header>
-<p>
-  <%= flash[:notice] %>
-</p>
-<p>
-  <%= flash[:alert] %>
-</p>
+      <header>
+        <h1>Book Club</h1>
 
-<%= yield %>
+        <div class="button-group">
+          <button><%= link_to "Books", books_path %></button>
+          <button><%= link_to "Add Book", new_book_path %></button>
+        </div>
 
-</div>
-</body>
+        <div class="notice">
+          <%= flash[:notice] %>
+        </div>
+
+        <div class="alert">
+          <%= flash[:alert] %>
+        </div>
+      </header>
+
+      <article>
+        <%= yield %>
+      </article>
+
+    </div>
+
+  </body>
 </html>

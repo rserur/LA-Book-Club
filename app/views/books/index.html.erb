@@ -1,7 +1,12 @@
-<ul>
+<h2>Books</h2>
+
 <% @books.each do |book| %>
 
-<li><%= book.title %></li>
+  <div class="book">
+    <h3>
+      <h3><%= link_to book.title, book_path(book) %></h3>
+    <p><%= book.description %></p>
+  </div>
 
 <% end %>
-</ul>
+
