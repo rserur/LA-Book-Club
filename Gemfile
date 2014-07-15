@@ -48,3 +48,12 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'valid_attribute'
 end
+
+gem 'faker'
+gem 'simple_form'
+gem 'bourbon'
+gem 'neat'
+
+group :test do
+  gem 'coveralls', require: false
+end

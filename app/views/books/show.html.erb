@@ -1,0 +1,39 @@
+
+<section class="details">
+  <h2>Book Details</h2>
+
+  <ul>
+    <li><strong>Title:</strong> <%= @book.title %>
+    <li><strong>Author:</strong> <%= @book.author.first_name %> <%= @book.author.last_name %></li>
+    <li><strong>Category:</strong> <%= @book.category.name %></li>
+    <li><strong>Year Published:</strong> <%= @book.year %></li>
+    <li><strong>Description:</strong> <%= @book.description %></li>
+  </ul>
+
+  <h3>Reviews</h3>
+  <hr>
+
+  <% @book.reviews.each do |review| %>
+    <div class="review">
+      <strong>Rating:</strong> <%= review.rating %>
+      <p><%= review.body %></p>
+    </div>
+  <% end %>
+
+</section>
+
+<section class="add-review">
+
+  <h4>Create Review</h4>
+  <hr>
+
+    <%= simple_form_for [@book, @review] do |f| %>
+
+      <%= f.input :rating, collection: 1..5 %>
+      <%= f.input :body %>
+
+      <%= f.button :submit %>
+
+    <% end %>
+
+</section>
